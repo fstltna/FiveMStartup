@@ -1,14 +1,14 @@
 #!/usr/bin/perl
 
 ### BEGIN INIT INFO
-# Provides:          lugdunon
+# Provides:          fivem
 # Required-Start:    $local_fs $remote_fs $network $syslog
 # Required-Stop:     $local_fs $remote_fs $network $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Lugdunon service 1.0
-# Description:       Lugdunon service 1.0
-# Documentation:     https://synchronetbbs.org/index.php/forum/alternate-startup-scripts
+# Short-Description: FiveM service 1.0
+# Description:       FiveM service 1.0
+# Documentation:     https://gameplayer.club
 # Type:              forking
 # X-Interactive:     false
 ### END INIT INFO
@@ -27,15 +27,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-my $LUGDUNONDIR = "/root/lugdunon";
-# Read in host name
-my $HOSTFILE = "/etc/hostname";
-open FILE, $HOSTFILE or die "Couldn't open file: $HOSTFILE";
-my $HOST = <FILE>;
-close FILE;
-chop($HOST);
-
-my $KILL_COMMAND = "/usr/bin/wget -O /dev/null http://$HOST:41976/management/CORE.COMMAND.SHUTDOWN?mode=now";
+my $FIVEMDIR = "/root/server-data";
+my $KILL_COMMAND = "killall server.cfg";
 
 my $Command = $ARGV[0];
 if ($Command eq "")
@@ -43,27 +36,27 @@ if ($Command eq "")
 	$Command = "NONE";
 }
 
-my $running=`ps ax|grep net.lugdunon.Server|grep -v grep`;
+my $running=`ps ax|grep server.cfg|grep -v grep`;
 
 if ($Command eq "start")
 {
 	if ($running eq "")
 	{
-		print "Starting Lugdunon...\n";
-		if (-f "$LUGDUNONDIR/nostart")
+		print "Starting FiveM...\n";
+		if (-f "$FIVEMDIR/nostart")
 		{
-			print "Removing $LUGDUNONDIR/nostart\n";
+			print "Removing $FIVEMDIR/nostart\n";
 			# Remove the lock file if it exists
-			unlink("$LUGDUNONDIR/nostart");
+			unlink("$FIVEMDIR/nostart");
 		}
 		# Start the screen process
-		system("nohup $LUGDUNONDIR/startlugdunon > /tmp/LugdunonStartup.log\&");
+		system("nohup $FIVEMDIR/startfivem > /tmp/FiveMStartup.log\&");
 	}
 }
 elsif ($Command eq "stop")
 {
-	print "Stopping Lugdunon process...\n";
-	system("touch '$LUGDUNONDIR/nostart'");
+	print "Stopping FiveM process...\n";
+	system("touch '$FIVEMDIR/nostart'");
 	if ($running ne "")
 	{
 		# Process is running, kill it
@@ -73,10 +66,10 @@ elsif ($Command eq "stop")
 }
 elsif ($Command eq "restart")
 {
-	if (-f "$LUGDUNONDIR/nostart")
+	if (-f "$FIVEMDIR/nostart")
 	{
-		print("Removing $LUGDUNONDIR/nostart\n");
-		unlink("$LUGDUNONDIR/nostart");
+		print("Removing $FIVEMDIR/nostart\n");
+		unlink("$FIVEMDIR/nostart");
 	}
 	if ($running ne "")
 	{
@@ -88,11 +81,11 @@ elsif ($Command eq "status")
 {
 	if ($running ne "")
 	{
-		print("Lugdunon Server Running\n");
+		print("FiveM Server Running\n");
 	}
 	else
 	{
-		print("Lugdunon Server Not Running\n");
+		print("FiveM Server Not Running\n");
 	}
 }
 else

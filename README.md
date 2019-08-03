@@ -7,11 +7,10 @@ Official support sites: [Official Github Repo](https://github.com/fstltna/Lugdun
 ---
 These start up the Lugdunon server at boot time with a "screen" process.
 
-1. Copy **lugdunon** into **/etc/init.d** - make sure it is executable
-2. Copy **run.sh** into **/root/lugdunon** - make sure it is executable
-3. Copy **startlugdunon** into **/root/lugdunon** - make sure it is executable
-4. Run "**systemctl enable lugdunon**" (only needed once, will stick)
-5. Run "**systemctl start lugdunon**" - starts Lugdunon without restarting the server
+1. Copy **fivem** into **/etc/init.d** - make sure it is executable
+2. Copy **startfivem** into **/root/server-data** - make sure it is executable
+3. Run "**systemctl enable fivem**" (only needed once, will stick)
+4. Run "**systemctl start fivem**" - starts Lugdunon without restarting the server
 
 When you want to view the Lugdunon console, just enter "**screen -r**" in your shell.
 
