@@ -14,7 +14,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-my $FIVEMDIR = "/root/server-data";
+my $FIVEMDIR = "/home/fivemowner/fivem";
 my $SCREENCMD = "/usr/bin/screen";
 
 # No changes below here...
@@ -55,7 +55,7 @@ while (-1)
 			close($OUTF);
 			chdir $FIVEMDIR;
 			print "Starting screen process\n";
-			system("$SCREENCMD -fa -S FiveM -d -U -m /root/fivem/run.sh +exec server.cfg");
+			system("$SCREENCMD -fa -S FiveM -d -U -m /home/fivemowner/fivem/run.sh +exec server.cfg");
 		}
 	}
 	# Sleep for 1 minute before checking again
