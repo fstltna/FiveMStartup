@@ -8,8 +8,8 @@ Official support sites: [Official Github Repo](https://github.com/fstltna/FiveMS
 These start up the FiveM server at boot time with a "screen" process.
 
 1. Copy **fivem** into **/home/fivemowner/bin** - make sure it is executable
-2. Copy **startfivem** into **/home/fivemowner/fivem** - make sure it is executable
-3. Add "**@reboot /home/fivemowner/bin/fvem start**" to the crontab
+2. Copy **startfivem** into **/home/fivemowner/fivem_resources** - make sure it is executable
+3. Add "**@reboot /home/fivemowner/bin/fivem start**" to the crontab
 
 When you want to view the FiveM console, just enter "**screen -r**" in your shell.
 

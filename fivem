@@ -27,7 +27,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-my $FIVEMDIR = "/home/fivemowner/fivem";
+my $FIVEMDIR = "/home/fivemowner/fivem_resources";
 my $KILL_COMMAND = "killall server.cfg";
 
 my $Command = $ARGV[0];
@@ -37,6 +37,8 @@ if ($Command eq "")
 }
 
 my $running=`ps ax|grep server.cfg|grep -v grep`;
+
+chdir ("$FIVEMDIR");
 
 if ($Command eq "start")
 {
